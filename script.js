@@ -13,5 +13,52 @@ Optional:
 1.  First screen is a heading with a start button.
 2.  The heading and start button will disappear once the game starts.
 
-Working Code
+
+
+
+                    Pseudo Code
+Image:
+1.  Use photoshop to cut different sections of a picture to use.
+
+Random words:
+1.  Either use an array of words or; 
+2.  Call on an encyclopedia API (This will be an improvement on a second build)
+3.  Once the word is chosen, return it to another array with each of the letters.
+
+// Initialize game variables
+wordList = ["javascript", "hangman", "pseudocode", "game"]
+selectedWord = random choice from wordList
+guessedLetters = []
+remainingGuesses = 6
+displayWord = "_" repeated for each letter in selectedWord
+
+// Main game loop
+while remainingGuesses > 0 and displayWord contains "_":
+    print displayWord
+    print "Remaining guesses: " + remainingGuesses
+    guessedLetter = prompt "Guess a letter: "
+    
+    if guessedLetter in guessedLetters:
+        print "You already guessed that letter."
+    else:
+        guessedLetters.append(guessedLetter)
+        
+        if guessedLetter in selectedWord:
+            // Update displayWord
+            for each letter in selectedWord:
+                if letter == guessedLetter:
+                    update displayWord at that position with guessedLetter
+        else:
+            remainingGuesses -= 1
+            print "Incorrect guess."
+
+// End game
+if displayWord contains no "_":
+    print "Congratulations! You guessed the word: " + selectedWord
+else:
+    print "Game over! The word was: " + selectedWord
+
+
+
+                    Working Code
 */
