@@ -122,4 +122,5 @@ wordList = [
 
 
 
+// function to generate a random word from the wordList array
 
