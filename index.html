@@ -4,17 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #game-container {
+            display: none; /* Hidden by default */
+        }
+
+        #actions {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="start-game">
-            <h1>Hangman Game!!</h1>
-            <h2>Type a letter into the input box to guess the random word.  The incorrect letters guessed will be displayed on screen.  The correct letters will be shown in the word.  Incorrect guesses will result in a graphic on the side with a hangman.  Once all parts are displayed the game is over.  If you beat the hangman, then you win!</h2>
+        <div id="start-game">
+            <h1 class="heading">Hangman Game!!</h1>
+            <h2>Type a letter into the input box to guess the random word.  The incorrect letters guessed will be displayed on screen.  The correct letters will be shown in the word.  Incorrect guesses will result in a graphic on the side with a hangman.  Once all parts of the hangman are displayed the game is over.  If you beat the hangman, then you win!</h2>
             <h2>Press the button below to start the game!!  Good Luck!!</h2>
         </div>
-        <div>
-            <form action="<button type=""></button>"></form>
+        <div class="start-button">
+            <button id="start-button">Start Game</button>
         </div>
     </header>
+    <main>
+        <section id="game-container"></section>
+        <section id="actions">
+            <div class="actions">
+                <button class="restart">Restart</button>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
