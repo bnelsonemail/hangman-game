@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.getElementById('start-button');
     const content = document.getElementById('game-container');
     const actions = document.getElementById('actions');
-    const heading = document.getElementsByClassName('heading');
     const intro = document.getElementById('intro');
 
     startButton.addEventListener('click', () => {
@@ -84,4 +83,43 @@ document.addEventListener('DOMContentLoaded', () => {
         intro.style.display = 'none';
     })
 })
+
+// Add an initialized game function
+function startGame () {
+    return resetGame();
+}
+
+// provide an array of words for the random selection of words
+const gameContainer = document.getElementById('game-container');
+wordList = [
+    'javascript', 
+    'python', 
+    'react',
+    'hangman',
+    'labrador',
+    'pseudocode',
+    'game',
+    'cobol',
+    'swift',
+    'rust',
+    'pascal',
+    'perl',
+    'java',
+    'waterskiing',
+    'software',
+    'programming',
+    'computer',
+    'hardware',
+    'engineering',
+    'google',
+    'netflix',
+    'weather',
+    'hurricane',
+    'summer',
+    'autumn',
+    'clock'
+];
+
+
+
 
