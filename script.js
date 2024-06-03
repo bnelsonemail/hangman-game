@@ -62,3 +62,26 @@ else:
 
                     Working Code
 */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const startButton = document.getElementById('start-button');
+    const content = document.getElementById('game-container');
+    const actions = document.getElementById('actions');
+    const heading = document.getElementsByClassName('heading');
+    const intro = document.getElementById('intro');
+
+    startButton.addEventListener('click', () => {
+        //Reveal the content
+        content.style.display = 'flex';
+        content.style.flexWrap = 'wrap';
+
+        actions.style.display = 'flex';
+        actions.style.justifyContent = 'center';
+        actions.style.alignItems = 'center';
+    
+        // Optionally, you can hide the start button after clicking
+        startButton.style.display = 'none';
+        intro.style.display = 'none';
+    })
+})
+
