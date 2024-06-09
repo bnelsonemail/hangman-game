@@ -122,5 +122,22 @@ wordList = [
 
 
 
-// function to generate a random word from the wordList array
+// function to generate a random word from the wordList 
+
+function randomWord(wordList) {
+    const randomIndex = Math.floor(Math.random() * wordList.length);
+    const selectedWord = wordList[randomIndex];
+    return selectedWord;
+}
+
+
+// function to place chosen word into an array making each letter an index
+function wordToArray(randomIndex, wordList) {
+    return wordList[randomIndex].split('');
+}
+
+// Example usage:
+const selectedWord = randomWord(wordList);
+const wordArray = wordToArray(selectedWord);
+console.log(wordArray);
 
