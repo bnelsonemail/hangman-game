@@ -1,0 +1,4 @@
+As a user of this game, the game needs to work without any glitchs.
+
+The beginning application site will contain the title of the game, instructions of how the game works and how the user will interact with the game, and a start button.  Nothing else will be displayed on the page.  After clicking on the button, the game will appear and the app start screen will be hidden.
+
