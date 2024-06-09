@@ -126,18 +126,19 @@ wordList = [
 
 function randomWord(wordList) {
     const randomIndex = Math.floor(Math.random() * wordList.length);
-    const selectedWord = wordList[randomIndex];
-    return selectedWord;
+   // const selectedWord = wordList[randomIndex];
+    return wordList[randomIndex];;
 }
 
 
 // function to place chosen word into an array making each letter an index
-function wordToArray(randomIndex, wordList) {
-    return wordList[randomIndex].split('');
+function wordToArray(selectedWord) {
+    console.log (selectedWord);
+    return selectedWord.split('');
 }
 
 // Example usage:
-const selectedWord = randomWord(wordList);
-const wordArray = wordToArray(selectedWord);
+let selectedWord = randomWord(wordList);
+let wordArray = wordToArray(selectedWord);
 console.log(wordArray);
 
