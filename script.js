@@ -85,9 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // Add an initialized game function
-function startGame () {
-    return resetGame();
+function initializeGame(){
+    guessedLetters = [];
+    wrongGuesses = 0;
+    randomWord();
+    displayWord();
+    createLetters();
+    messageElement.textcontent = "";
 }
+
 
 // provide an array of words for the random selection of words
 const gameContainer = document.getElementById('game-container');
@@ -120,7 +126,9 @@ wordList = [
     'clock'
 ];
 
-
+let guessedLetters = [];
+let wrongGuesses = 0;
+const maxWrongGuesses = 6;
 
 // function to generate a random word from the wordList 
 

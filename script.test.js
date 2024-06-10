@@ -21,7 +21,7 @@ console.log(randomWord3.length > 0); // Expected output: true
 
 
 
-describe('wordToArray', () => {
+describe('#wordToArray', () => {
   it('should return an array with each letter as an index', () => {
     const word = 'hangman';
     const expectedArray = ['h', 'a', 'n', 'g', 'm', 'a', 'n'];
@@ -39,7 +39,7 @@ describe('wordToArray', () => {
     const expectedArray = ['a'];
     expect(wordToArray(word)).toEqual(expectedArray);
   });
-});describe('wordToArray', () => {
+});describe('#wordToArray', () => {
   it('should return an array with each letter as an index', () => {
     const word = 'hangman';
     const expectedArray = ['h', 'a', 'n', 'g', 'm', 'a', 'n'];
@@ -56,3 +56,64 @@ describe('wordToArray', () => {
     expect(wordToArray(word)).toEqual(expectedArray);
   });
 });
+
+
+describe('#startGame', () => {
+// Test case 1: Check if startGame returns a value
+test('startGame should return a value', () => {
+  const result = startGame();
+  expect(result).toBeDefined();
+});
+
+// Test case 2: Check if startGame resets the game
+test('startGame should reset the game', () => {
+  // Mock the resetGame function
+  const resetGame = jest.fn();
+  // Replace the original resetGame function with the mock
+  window.resetGame = resetGame;
+
+  // Call startGame
+  startGame();
+});
+  // Check if resetGame is called
+  expect(resetGame).toHaveBeenCalled();
+});describe('#startGame', () => {
+  it('should reset the game', () => {
+    // Add your assertions here
+  });
+
+  it('should return the result of resetGame', () => {
+    // Add your assertions here
+  });
+
+  // Add more test cases if needed
+});
+test('startGame should return a value', () => {
+  const result = startGame();
+  expect(result).toBeDefined();
+});
+
+// Test case 2: Check if startGame resets the game
+test('startGame should reset the game', () => {
+  // Mock the resetGame function
+  const resetGame = jest.fn();
+  // Replace the original resetGame function with the mock
+  window.resetGame = resetGame;
+
+  // Call startGame
+  startGame();
+
+  // Check if resetGame is called
+  expect(resetGame).toHaveBeenCalled();
+});describe('#startGame', () => {
+  it('should reset the game', () => {
+    // Add your assertions here
+  });
+
+  it('should return the result of resetGame', () => {
+    // Add your assertions here
+  });
+
+  // Add more test cases if needed
+});
+
