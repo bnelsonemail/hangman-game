@@ -132,45 +132,14 @@ function initializeGame(){
     // select a random word from the word list
     const randomIndex = Math.floor(Math.random() * wordList.length);
     const selectedWord = wordList[randomIndex];
-
+    console.log(`The selected word: ${selectedWord}`);
+    
     // set up an array to track the guessed letters
     const guessedLetters = Array(selectedWord).fill(' ');
+    console.log(`The guessed letters: ${guessedLetters}`);
 
-    // initialize the number of remaining guesses
-    let remainingGuesses = 6;
+    
 
-    // function to display the current state of the game
-    function displayGameState(){
-        console.log('word:  ' + guessedLetters.join(' '));
-        console.log('Remaining Guesses:  ' + remainingGuesses);
-    }
-    // function to handle a guess
-    function handleGuess(letter){
-        let isCorrectGuess = false;
-
-        // Check if guessed letter is in the selected word
-        for (let i = 0; i < selectedWord.length; i++){
-            if(selectedWord [i] === letter){
-                guessedLetters[i] = letter;
-                isCorrectGuess = true;
-            }
-        }
-
-        // Decrease the number of remaining guesses if the guess is incorrect
-        if(!isCorrectGuess) {
-            remainingGuesses--;
-        }
-
-        // Display the updated game state
-        displayGameState();
-
-        // check if game is won or lost
-        if (guessedLetters.join(' ') === selectedWord) {
-            alert (`Congratulations! You guessed the word: ${selectedWord}`);
-        } else if (remainingGuesses === 0) {
-            alert (`Game Over!  The word was: ${selectedWord}`);
-        }
-    }
     /*
     displayWord();
     createLetters();
@@ -179,6 +148,44 @@ function initializeGame(){
 }
 
 const makeGuess = initializeGame();
+
+
+// function to handle a guess
+function handleGuess(letter){
+    let isCorrectGuess = false;
+    // initialize the number of remaining guesses
+    let remainingGuesses = 6;
+    // Check if guessed letter is in the selected word
+    for (let i = 0; i < selectedWord.length; i++){
+        if(selectedWord [i] === letter){
+            guessedLetters[i] = letter;
+            isCorrectGuess = true;
+        }
+    }
+
+    // Decrease the number of remaining guesses if the guess is incorrect
+    if(!isCorrectGuess) {
+        remainingGuesses--;
+    }
+
+    // Display the updated game state
+    displayGameState();
+
+    // check if game is won or lost
+    if (guessedLetters.join(' ') === selectedWord) {
+        alert (`Congratulations! You guessed the word: ${selectedWord}`);
+    } else if (remainingGuesses === 0) {
+        alert (`Game Over!  The word was: ${selectedWord}`);
+    }
+}
+
+// function to display the current state of the game
+function displayGameState(){
+    console.log('word:  ' + guessedLetters.join(' '));
+    console.log('Remaining Guesses:  ' + remainingGuesses);
+}
+
+
 
 /*
 // function to generate a random word from the wordList 
