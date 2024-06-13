@@ -137,13 +137,14 @@ function initializeGame(){
     const randomIndex = randomWord(wordList);
     console.log(`the random index: ${randomIndex}`)
     
+
     // return the selected word to access outside of the function
     return selectedWord = randomIndex.split('');
 }
 
 
 const makeGuess = initializeGame();
-
+const wordDisplay = displayWord(selectedWord);
 
 
 
