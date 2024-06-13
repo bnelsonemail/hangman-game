@@ -86,18 +86,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let guessedLetters = [];
 let wrongGuesses = 0;
-const maxWrongGuesses = 6;
+let remainingGuesses = 6;
 console.log(`guessed letters: ${guessedLetters}`);
 console.log(`wrong guesses: ${wrongGuesses}`);
 
 
+const gameContainer = document.getElementById('game-container');
 
+// set up an array to track the guessed letters
+//const guessedLetters = Array(selectedWord).fill(' ');
+//console.log(`The guessed letters: ${guessedLetters}`);
 
 
 
 
 // provide an array of words for the random selection of words
-const gameContainer = document.getElementById('game-container');
 const wordList = [
     'javascript', 
     'python', 
@@ -130,31 +133,23 @@ const wordList = [
 // Add an initialized game function
 function initializeGame(){
     // select a random word from the word list
-    const randomIndex = Math.floor(Math.random() * wordList.length);
-    const selectedWord = wordList[randomIndex];
-    console.log(`The selected word: ${selectedWord}`);
+    const randomIndex = randomWord(wordList);
+    console.log(`the random index: ${randomIndex}`)
     
-    // set up an array to track the guessed letters
-    const guessedLetters = Array(selectedWord).fill(' ');
-    console.log(`The guessed letters: ${guessedLetters}`);
-
-    
-
-    /*
-    displayWord();
-    createLetters();
-    console.log(selectedWord);
-    */
+    // return the selected word to access outside of the function
+    return selectedWord = randomIndex.split('');
 }
 
+
 const makeGuess = initializeGame();
+
+
+
 
 
 // function to handle a guess
 function handleGuess(letter){
     let isCorrectGuess = false;
-    // initialize the number of remaining guesses
-    let remainingGuesses = 6;
     // Check if guessed letter is in the selected word
     for (let i = 0; i < selectedWord.length; i++){
         if(selectedWord [i] === letter){
@@ -162,12 +157,10 @@ function handleGuess(letter){
             isCorrectGuess = true;
         }
     }
-
     // Decrease the number of remaining guesses if the guess is incorrect
     if(!isCorrectGuess) {
         remainingGuesses--;
     }
-
     // Display the updated game state
     displayGameState();
 
@@ -179,6 +172,10 @@ function handleGuess(letter){
     }
 }
 
+
+
+
+
 // function to display the current state of the game
 function displayGameState(){
     console.log('word:  ' + guessedLetters.join(' '));
@@ -187,7 +184,7 @@ function displayGameState(){
 
 
 
-/*
+
 // function to generate a random word from the wordList 
 
 function randomWord(wordList) {
@@ -197,15 +194,32 @@ function randomWord(wordList) {
 }
 
 
+
+// function to place selected word into an array on the web page in the word container
+
+console.log(`the selectedWord is: ${selectedWord}`)
+
+// Call the container
+const wordContainer = document.getElementById('selected-word-container');
+
+// create and append an element for each item in the array
+function displayWord (){
+    selectedWord.forEach(function (val){
+        const element = document.createElement('div')
+        element.textContent = val;
+        wordContainer.appendChild(element);
+    })
+}
+
+
+/*
 // function to place chosen word into an array making each letter an index
 function wordToArray(selectedWord) {
-    console.log (selectedWord);
     return selectedWord.split('');
 }
 
 // Example usage:
 let selectedWord = randomWord(wordList);
 let wordArray = wordToArray(selectedWord);
-console.log(wordArray);
-
+console.log (`the wordToArray: ${wordArray}`);
 */
