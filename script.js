@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const content = document.getElementById('game-container');
     const actions = document.getElementById('actions');
     const intro = document.getElementById('intro');
+    
 
     startButton.addEventListener('click', () => {
         //Reveal the content
@@ -200,15 +201,16 @@ function randomWord(wordList) {
 console.log(`the selectedWord is: ${selectedWord}`)
 
 // Call the container
-const wordContainer = document.getElementById('selected-word-container');
+
 
 // create and append an element for each item in the array
-function displayWord (){
+function displayWord (selectedWord){
+    const wordContainer = document.getElementById('selected-word-container');
     selectedWord.forEach(function (val){
-        const element = document.createElement('div')
+        const element = document.createElement('div');
         element.textContent = val;
         wordContainer.appendChild(element);
-    })
+    });
 }
 
 
