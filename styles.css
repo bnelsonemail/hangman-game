@@ -47,3 +47,23 @@ button:active {
     display: flex;
     justify-content: center;
 }
+
+.selected-word {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    font-weight: 900;
+    font-family: cursive;
+    font-size: 4rem;
+    padding: 2rem;
+}
+
+#selected-word-container {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    color: white;
+    font-weight: 900;
+    font-family: cursive;
+    font-size: 3rem;
+}

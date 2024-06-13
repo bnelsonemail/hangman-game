@@ -142,8 +142,9 @@ function initializeGame(){
     return selectedWord = randomIndex.split('');
 }
 
-
+// call to initialize game
 const makeGuess = initializeGame();
+// call to display the selected word
 const wordDisplay = displayWord(selectedWord);
 
 
@@ -205,12 +206,14 @@ console.log(`the selectedWord is: ${selectedWord}`)
 
 
 // create and append an element for each item in the array
-function displayWord (selectedWord){
+function displayWord(selectedWord) {
     const wordContainer = document.getElementById('selected-word-container');
-    selectedWord.forEach(function (val){
-        const element = document.createElement('div');
-        element.textContent = val;
-        wordContainer.appendChild(element);
+    selectedWord.forEach(function (val) {
+        const word = document.createElement('div');
+        word.classList.add('selected-word');
+        
+        word.textContent = val.toUpperCase(); // Convert the letter to uppercase
+        wordContainer.appendChild(word);
     });
 }
 
