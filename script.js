@@ -211,8 +211,9 @@ function displayWord(selectedWord) {
     selectedWord.forEach(function (val) {
         const word = document.createElement('div');
         word.classList.add('selected-word');
-        
-        word.textContent = val.toUpperCase(); // Convert the letter to uppercase
+
+        // Convert the letter to uppercase
+        word.textContent = val.toUpperCase(); 
         wordContainer.appendChild(word);
     });
 }
