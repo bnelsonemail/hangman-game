@@ -213,9 +213,42 @@ function displayWord(selectedWord) {
         word.classList.add('selected-word');
 
         // Convert the letter to uppercase
-        word.textContent = val.toUpperCase(); 
-        wordContainer.appendChild(word);
+        //word.textContent = val.toUpperCase(); 
+       word.textContent = '_';
+       wordContainer.appendChild(word);
+
+
     });
+}
+
+function revealWord (selectedWord) {
+    const revealContainer = document.getElementById('reveal-word-container');
+    const guessForm = document.getElementById('guesses-form');
+    guessForm.addEventListener('submit', function (e){
+        // prefent the default form submission behavior
+        e.preventDefault();
+
+        // collect form data
+        const formData = new FormData(e.target);
+
+        // stor form data in a variable
+        const formObject = {};
+        formData.forEach((value, key) => {
+            formObject[key] = value;
+        });
+        console.log(formObject)
+    });
+    /*
+    // use forEach loop and index (idx) to run if statement with includes to reveal letters.
+    selectedWord.forEach(function (val, idx)){
+        // create div element and class to contain revealed word and styling capabilities
+        const reveal = document.createElement('div');
+        reveal.classList.add('reveal-word');
+
+        // if statement to compare guess with selectedWord
+
+
+    }*/
 }
 
 

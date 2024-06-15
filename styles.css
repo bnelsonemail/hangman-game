@@ -22,6 +22,12 @@ h1 {
     font-size: 4rem;
 }
 
+h3 {
+    font-weight: 900;
+    font-family: cursive;
+    font-size: 2rem;
+}
+
 button {
     padding: 8px 16px;
     font-size: 1.5rem;
@@ -36,6 +42,24 @@ button:hover {
     background-color: #1009ee;
     transition: .5s;
     cursor: pointer;
+}
+
+.guesses {
+    font-weight: 900;
+    font-family: cursive;
+    font-size: 2rem;
+}
+
+.restart {
+    font-weight: 900;
+    font-family: cursive;
+    font-size: 2rem; 
+}
+
+#start-button {
+    font-weight: 900;
+    font-family: cursive;
+    font-size: 2rem; 
 }
 
 button:active {
@@ -66,4 +90,13 @@ button:active {
     font-weight: 900;
     font-family: cursive;
     font-size: 3rem;
+}
+
+#incorrect-guesses {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    font-weight: 900;
+    font-family: cursive;
+    font-size: 2rem;
 }

@@ -6,7 +6,7 @@
     <title>Hangman Game</title>
     <!-- include CSS for Jasmine 
     <link rel="stylesheet" href="https://unpkg.com/jasmine-core@4.1.0/lib/jasmine-core/jasmine.css" />
-    <!-- CSS File to go here -->
+     CSS File to go here -->
     <link rel="stylesheet" href="styles.css">
     <style>
         #game-container {
@@ -34,9 +34,17 @@
     <main>
         <section id="game-container" class="game-container">
             <div id="selected-word">
-                <h3 id="selected-word">The word has been chosen: guess the letters</h3>
+                <h3>The word has been chosen: Guess the letters</h3>
             </div>
             <div id="selected-word-container"></div>
+            <div id="reveal-word-container"></div>
+            <div id="guess-container">
+                <form id="guesses-form">
+                    <label class="guesses" for="guesses">Input Guess:</label>
+                    <input class="guesses" type="text" name="guesses" maxlength="1">
+                    <button id="guesses-submit" class="guesses">Submit</button>
+                </form>
+            </div>
             <div id="incorrect-guesses">
                 <h3>Incorrect guesses are displayed below:</h3>        
             </div>
