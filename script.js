@@ -221,6 +221,25 @@ function displayWord(selectedWord) {
     });
 }
 
+const guessForm = document.getElementById('guesses-form');
+    guessForm.addEventListener('submit', function (e){
+        // prefent the default form submission behavior
+        e.preventDefault();
+
+        // collect form data
+        const formData = new FormData(e.target);
+
+        // stor form data in a variable
+        const formObject = {};
+        formData.forEach((value, key) => {
+            formObject[key] = value;
+        });
+        console.log(formObject)
+    });
+
+
+
+/*
 function revealWord (selectedWord) {
     const revealContainer = document.getElementById('reveal-word-container');
     const guessForm = document.getElementById('guesses-form');
@@ -237,7 +256,8 @@ function revealWord (selectedWord) {
             formObject[key] = value;
         });
         console.log(formObject)
-    });
+    });*/
+
     /*
     // use forEach loop and index (idx) to run if statement with includes to reveal letters.
     selectedWord.forEach(function (val, idx)){
@@ -248,8 +268,8 @@ function revealWord (selectedWord) {
         // if statement to compare guess with selectedWord
 
 
-    }*/
-}
+    }
+}*/
 
 
 /*
