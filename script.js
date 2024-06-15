@@ -63,7 +63,8 @@ else:
                     Working Code
 */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', (e) => {
+    e.preventDefault();
     const startButton = document.getElementById('start-button');
     const content = document.getElementById('game-container');
     const actions = document.getElementById('actions');
@@ -143,37 +144,13 @@ function initializeGame(){
 }
 
 // call to initialize game
-const makeGuess = initializeGame();
+const startGame = initializeGame();
 // call to display the selected word
 const wordDisplay = displayWord(selectedWord);
 
 
 
 
-// function to handle a guess
-function handleGuess(letter){
-    let isCorrectGuess = false;
-    // Check if guessed letter is in the selected word
-    for (let i = 0; i < selectedWord.length; i++){
-        if(selectedWord [i] === letter){
-            guessedLetters[i] = letter;
-            isCorrectGuess = true;
-        }
-    }
-    // Decrease the number of remaining guesses if the guess is incorrect
-    if(!isCorrectGuess) {
-        remainingGuesses--;
-    }
-    // Display the updated game state
-    displayGameState();
-
-    // check if game is won or lost
-    if (guessedLetters.join(' ') === selectedWord) {
-        alert (`Congratulations! You guessed the word: ${selectedWord}`);
-    } else if (remainingGuesses === 0) {
-        alert (`Game Over!  The word was: ${selectedWord}`);
-    }
-}
 
 
 
@@ -235,11 +212,41 @@ const guessForm = document.getElementById('guesses-form');
             formObject[key] = value;
         });
         console.log(formObject)
+        return formObject;
     });
 
+let letter = formObject
 
 
-/*
+// function to handle a guess
+function handleGuess(letter){
+    let isCorrectGuess = false;
+    console.log(`inital guess: ${isCorrectGuess}`);
+    // Check if guessed letter is in the selected word
+    for (let i = 0; i < selectedWord.length; i++){
+        if(selectedWord [i] === letter){
+            guessedLetters[i] = letter;
+            isCorrectGuess = true;
+            console.log(`the guess is: ${isCorrectGuess}`);
+        }
+    }
+    // Decrease the number of remaining guesses if the guess is incorrect
+    if(!isCorrectGuess) {
+        remainingGuesses--;
+    }
+    // Display the updated game state
+    displayGameState();
+
+    // check if game is won or lost
+    if (guessedLetters.join(' ') === selectedWord) {
+        alert (`Congratulations! You guessed the word: ${selectedWord}`);
+    } else if (remainingGuesses === 0) {
+        alert (`Game Over!  The word was: ${selectedWord}`);
+    }
+}
+
+handleGuess(letter);
+
 function revealWord (selectedWord) {
     const revealContainer = document.getElementById('reveal-word-container');
     const guessForm = document.getElementById('guesses-form');
@@ -256,7 +263,7 @@ function revealWord (selectedWord) {
             formObject[key] = value;
         });
         console.log(formObject)
-    });*/
+    });
 
     /*
     // use forEach loop and index (idx) to run if statement with includes to reveal letters.
@@ -268,8 +275,8 @@ function revealWord (selectedWord) {
         // if statement to compare guess with selectedWord
 
 
-    }
-}*/
+    }*/
+}
 
 
 /*
