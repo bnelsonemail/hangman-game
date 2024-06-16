@@ -224,7 +224,13 @@ let inputs = {
 
 function handleGuess(e){
     console.log(`change event: ${e}`)
-    inputs[e.target.name] = target.value
+    switch (e.target.type){
+        case 'data-name':
+            inputs = {...inputs, [e.target.data-nam]: e.target.value};
+            break;
+    };
+    console.log(`New inputs: ${inputs}`);
+    console.log(data-name)
 };
 
 
