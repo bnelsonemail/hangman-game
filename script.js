@@ -226,8 +226,8 @@ function handleGuess(e){
     console.log(`change event: ${e.type}`)
     console.log(`input value: ${e.target.value}`)
 
-    // Update the inputes object with the new value
-    inputs.name = e.target.value;
+    // Update the inputs object with the new value
+    inputs.userGuesses = e.target.value;
     /*switch (e.target.type){
         case 'name':
             inputs = {...inputs, [e.target.name]: e.target.value};
@@ -237,16 +237,19 @@ function handleGuess(e){
     
 };
 
+//console.log(`The return value: ${guesses}`)
 
 function submitForm(e){
     e.preventDefault();
-    console.log(`submit event: ${e}`);
-    console.log(`Form submitted with the following data: ${inputs}`);
+    //console.log(`Form submitted with the following data: ${inputs.userGuesses}`);
     // Also add here => form validation, api calls (try, catch), error handling
     document.getElementById('guesses-form');
-    inputs = {
+    /*inputs = {
         userGuesses: ''
-    };
+    };*/
+    console.log('=========')
+    console.log(`Form submitted with the following data: ${inputs.userGuesses}`);
+    return guesses = inputs.userGuesses;
 }
 
 
