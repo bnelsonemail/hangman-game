@@ -227,13 +227,13 @@ function handleGuess(e){
     console.log(`input value: ${e.target.value}`)
 
     // Update the inputes object with the new value
-    inputs.userGuesses = e.target.value;
+    inputs.name = e.target.value;
     /*switch (e.target.type){
-        case 'data-name':
-            inputs = {...inputs, [e.target.data-nam]: e.target.value};
+        case 'name':
+            inputs = {...inputs, [e.target.name]: e.target.value};
             break;
     };*/
-    console.log(`New inputs: ${inputs}`);
+    console.log(`New inputs: ${inputs.userGuesses}`);
     
 };
 
