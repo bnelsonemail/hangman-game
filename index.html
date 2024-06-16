@@ -40,9 +40,16 @@
             <div id="selected-word-container"></div>
             <div id="reveal-word-container"></div>
             <div id="guess-container">
-                <form id="guesses-form">
-                    <label class="guesses" for="guesses">Input Guess:</label>
-                    <input class="guesses" type="text" name="guesses" maxlength="1">
+                <form id="guesses-form" onsubmit="submitForm(event)">
+                    <label class="guesses" for="userGuesses">Input Guess:</label>
+                    <input 
+                    id="userGuesses"
+                    class="guesses" 
+                    type="text" 
+                    name="userGuesses" 
+                    maxlength="1"
+                    onchange="handleGuess(event)"
+                    />
                     <button id="guesses-submit" class="guesses">Submit</button>
                 </form>
             </div>

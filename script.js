@@ -217,7 +217,32 @@ const guessForm = document.getElementById('guesses-form');
 
 //let letter = formObject
 
+let inputs = {
+    userGuesses: ''
+}
 
+
+function handleGuess(e){
+    console.log(`change event: ${e}`)
+    inputs[e.target.name] = target.value
+};
+
+
+function submitForm(e){
+    e.preventDefault();
+    console.log(`submit event: ${e}`);
+    console.log(`Form submitted with the following data: ${inputs}`);
+    // Also add here => form validation, api calls (try, catch), error handling
+    document.getElementById('guesses-form');
+    inputs = {
+        userGuesses: ''
+    };
+}
+
+
+
+
+/*
 // function to handle a guess
 function handleGuess(letter){
     let isCorrectGuess = false;
@@ -244,7 +269,7 @@ function handleGuess(letter){
         alert (`Game Over!  The word was: ${selectedWord}`);
     }
 }
-
+*/
 //handleGuess(letter);
 /*
 function revealWord (selectedWord) {
