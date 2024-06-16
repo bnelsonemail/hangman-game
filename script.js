@@ -215,7 +215,7 @@ const guessForm = document.getElementById('guesses-form');
         return formObject;
     });
 
-let letter = formObject
+//let letter = formObject
 
 
 // function to handle a guess
@@ -245,8 +245,8 @@ function handleGuess(letter){
     }
 }
 
-handleGuess(letter);
-
+//handleGuess(letter);
+/*
 function revealWord (selectedWord) {
     const revealContainer = document.getElementById('reveal-word-container');
     const guessForm = document.getElementById('guesses-form');
@@ -264,7 +264,7 @@ function revealWord (selectedWord) {
         });
         console.log(formObject)
     });
-
+*/
     /*
     // use forEach loop and index (idx) to run if statement with includes to reveal letters.
     selectedWord.forEach(function (val, idx)){
@@ -275,8 +275,8 @@ function revealWord (selectedWord) {
         // if statement to compare guess with selectedWord
 
 
-    }*/
-}
+    }
+}*/
 
 
 /*
