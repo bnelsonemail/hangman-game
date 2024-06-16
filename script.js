@@ -197,7 +197,7 @@ function displayWord(selectedWord) {
 
     });
 }
-
+/*
 const guessForm = document.getElementById('guesses-form');
     guessForm.addEventListener('submit', function (e){
         // prefent the default form submission behavior
@@ -216,21 +216,25 @@ const guessForm = document.getElementById('guesses-form');
     });
 
 //let letter = formObject
-
+*/
 let inputs = {
     userGuesses: ''
 }
 
 
 function handleGuess(e){
-    console.log(`change event: ${e}`)
-    switch (e.target.type){
+    console.log(`change event: ${e.type}`)
+    console.log(`input value: ${e.target.value}`)
+
+    // Update the inputes object with the new value
+    inputs.userGuesses = e.target.value;
+    /*switch (e.target.type){
         case 'data-name':
             inputs = {...inputs, [e.target.data-nam]: e.target.value};
             break;
-    };
+    };*/
     console.log(`New inputs: ${inputs}`);
-    console.log(data-name)
+    
 };
 
 
