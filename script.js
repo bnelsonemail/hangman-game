@@ -234,7 +234,7 @@ function handleGuess(e){
             break;
     };*/
     console.log(`New inputs: ${inputs.userGuesses}`);
-    
+    //return letter = inputs.userGuesses;
 };
 
 //console.log(`The return value: ${guesses}`)
@@ -249,7 +249,8 @@ function submitForm(e){
     };*/
     console.log('=========')
     console.log(`Form submitted with the following data: ${inputs.userGuesses}`);
-    return guesses = inputs.userGuesses;
+    console.log('=========')
+    
 }
 
 
@@ -259,6 +260,7 @@ function submitForm(e){
 // function to handle a guess
 function handleGuess(letter){
     let isCorrectGuess = false;
+    console.log(`return value letter: ${letter}`)
     console.log(`inital guess: ${isCorrectGuess}`);
     // Check if guessed letter is in the selected word
     for (let i = 0; i < selectedWord.length; i++){
