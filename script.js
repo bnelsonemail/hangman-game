@@ -233,8 +233,9 @@ function handleGuess(e){
             inputs = {...inputs, [e.target.name]: e.target.value};
             break;
     };*/
-    console.log(`New inputs: ${inputs.userGuesses}`);
-    //return letter = inputs.userGuesses;
+    let letter = inputs.userGuesses
+    console.log(`letter: ${letter}`)
+    return letter
 };
 
 //console.log(`The return value: ${guesses}`)
@@ -253,12 +254,12 @@ function submitForm(e){
     
 }
 
+// Currently, the analyzeGuess runs before a guess is made, but the submit does not trigger the function.
 
 
-
-/*
-// function to handle a guess
-function handleGuess(letter){
+// function to analyze a guess
+function analyzeGuess(letter){
+    console.log(`analyzed letter: ${letter}`)
     let isCorrectGuess = false;
     console.log(`return value letter: ${letter}`)
     console.log(`inital guess: ${isCorrectGuess}`);
@@ -284,7 +285,13 @@ function handleGuess(letter){
         alert (`Game Over!  The word was: ${selectedWord}`);
     }
 }
-*/
+
+analyzeGuess()
+
+
+
+
+
 //handleGuess(letter);
 /*
 function revealWord (selectedWord) {
