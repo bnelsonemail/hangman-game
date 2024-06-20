@@ -136,7 +136,7 @@ const wordList = [
 function initializeGame(){
     // select a random word from the word list
     const randomIndex = randomWord(wordList);
-    console.log(`the random index: ${randomIndex}`)
+    //console.log(`the random index: ${randomIndex}`)
     
 
     // return the selected word to access outside of the function
@@ -158,7 +158,7 @@ const wordDisplay = displayWord(selectedWord);
 
 // function to display the current state of the game
 function displayGameState(){
-    console.log('word:  ' + guessedLetters.join(' '));
+    //console.log('word:  ' + guessedLetters.join(' '));
     console.log('Remaining Guesses:  ' + remainingGuesses);
 }
 
@@ -224,7 +224,7 @@ let inputs = {
 
 function handleGuess(e){
     console.log(`change event: ${e.type}`)
-    console.log(`input value: ${e.target.value}`)
+    //console.log(`input value: ${e.target.value}`)
 
     // Update the inputs object with the new value
     inputs.userGuesses = e.target.value;
@@ -254,36 +254,42 @@ function submitForm(e){
     
 }
 
-// Currently, the analyzeGuess runs before a guess is made, but the submit does not trigger the function.
+// Currently, the analyzeGuess runs before a guess is made, but the submit does not trigger the function.  Try inserting an add event listener with an if statement checking on the length or value of the letter array
+
 
 
 // function to analyze a guess
 function analyzeGuess(letter){
-    console.log(`analyzed letter: ${letter}`)
-    let isCorrectGuess = false;
-    console.log(`return value letter: ${letter}`)
-    console.log(`inital guess: ${isCorrectGuess}`);
-    // Check if guessed letter is in the selected word
-    for (let i = 0; i < selectedWord.length; i++){
-        if(selectedWord [i] === letter){
-            guessedLetters[i] = letter;
-            isCorrectGuess = true;
-            console.log(`the guess is: ${isCorrectGuess}`);
+    
+    const guessesSubmit = document.getElementById('guesses-submit')
+    guessesSubmit.addEventListener('click', () => {
+        let analyzedLetter = inputs.userGuesses
+        console.log(`analyzed letter: ${analyzedLetter}`)
+        let isCorrectGuess = false;
+        console.log(`return value letter: ${inputs.userGuesses}`)
+        //console.log(`inital guess: ${isCorrectGuess}`);
+        // Check if guessed letter is in the selected word
+        for (let i = 0; i < selectedWord.length; i++){
+            if(selectedWord [i] === analyzedLetter){
+                guessedLetters[i] = analyzedLetter;
+                isCorrectGuess = true;
+                console.log(`the guess is: ${isCorrectGuess}`);
+            }
         }
-    }
-    // Decrease the number of remaining guesses if the guess is incorrect
-    if(!isCorrectGuess) {
-        remainingGuesses--;
-    }
-    // Display the updated game state
-    displayGameState();
+        // Decrease the number of remaining guesses if the guess is incorrect
+        if(!isCorrectGuess) {
+            remainingGuesses--;
+        }
+        // Display the updated game state
+        displayGameState();
 
-    // check if game is won or lost
-    if (guessedLetters.join(' ') === selectedWord) {
-        alert (`Congratulations! You guessed the word: ${selectedWord}`);
-    } else if (remainingGuesses === 0) {
-        alert (`Game Over!  The word was: ${selectedWord}`);
-    }
+        // check if game is won or lost
+        if (guessedLetters.join(' ') === selectedWord) {
+            alert (`Congratulations! You guessed the word: ${selectedWord}`);
+        } else if (remainingGuesses === 0) {
+            alert (`Game Over!  The word was: ${selectedWord}`);
+        }
+    })
 }
 
 analyzeGuess()
