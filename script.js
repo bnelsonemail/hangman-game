@@ -298,6 +298,31 @@ analyzeGuess()
 
 
 
+// Display guesses on the webpage
+function displayGuesses() {
+    //console.log('function is being executed')
+    const btn = document.getElementById('guesses-submit')
+    btn.addEventListener('click', function(e){
+        e.preventDefault()
+        // collect form data
+        let guesses = inputs.userGuesses
+        console.log(`the guess is: ${guesses}`)
+        // create a <p> to contain the guesses
+        let p = document.createElement('p')
+        p.textContent = guesses + ',  '
+        // append the paragraph to the output div
+        let display = document.getElementById('display-guesses')
+        display.appendChild(p)
+        // clear form after submission
+        document.getElementById('guesses-form').reset()     
+
+    })
+}
+
+displayGuesses()
+
+
+
 //handleGuess(letter);
 /*
 function revealWord (selectedWord) {
