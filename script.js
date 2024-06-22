@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     })
 })
 
+const matchingGuesses = []
 let guessedLetters = [];
 let wrongGuesses = 0;
 let remainingGuesses = 6;
@@ -254,7 +255,45 @@ function submitForm(e){
     
 }
 
-// Currently, the analyzeGuess runs before a guess is made, but the submit does not trigger the function.  Try inserting an add event listener with an if statement checking on the length or value of the letter array
+// function to compare the guess to the selected word and match all the matching indices. 
+function matchingIndices(arr,value){
+    let index = arr.indexOf(value)
+    console.log(arr)
+    while (index !== -1){
+        matchingGuesses.push(index)
+        index = arr.indexOf (value, index + 1)
+    }
+    return matchingGuesses.value
+}
+
+
+
+
+
+
+
+
+
+// This function needs work and is not working properly
+
+function fillArrayWithMatchingIndices(string, value) {
+    // Create an array with the same length as the string, initialized with null
+    let resultArray = Array(string.length).fill(null);
+
+    // Iterate through the string to find matching indices
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] === value) {
+            resultArray[i] = value;
+        }
+    }
+
+    return resultArray;
+}
+
+
+
+
+
 
 
 
@@ -279,6 +318,14 @@ function analyzeGuess(){
         // Decrease the number of remaining guesses if the guess is incorrect
         if(!isCorrectGuess) {
             remainingGuesses--;
+        }
+
+        // Display letters in separate array 
+        if(isCorrectGuess){
+            matchingIndices(selectedWord, analyzedLetter)
+            console.log(`matchingGuesses: ${matchingGuesses}`)
+            fillArrayWithMatchingIndices(matchingGuesses, analyzedLetter)
+            //console.log(`new array: ${resultArray}`)
         }
         // Display the updated game state
         displayGameState();
