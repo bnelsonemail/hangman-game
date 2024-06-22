@@ -259,7 +259,7 @@ function submitForm(e){
 
 
 // function to analyze a guess
-function analyzeGuess(letter){
+function analyzeGuess(){
     
     const guessesSubmit = document.getElementById('guesses-submit')
     guessesSubmit.addEventListener('click', () => {
@@ -267,7 +267,7 @@ function analyzeGuess(letter){
         console.log(`analyzed letter: ${analyzedLetter}`)
         let isCorrectGuess = false;
         console.log(`return value letter: ${inputs.userGuesses}`)
-        //console.log(`inital guess: ${isCorrectGuess}`);
+        
         // Check if guessed letter is in the selected word
         for (let i = 0; i < selectedWord.length; i++){
             if(selectedWord [i] === analyzedLetter){
@@ -284,10 +284,10 @@ function analyzeGuess(letter){
         displayGameState();
 
         // check if game is won or lost
-        if (guessedLetters.join(' ') === selectedWord) {
-            alert (`Congratulations! You guessed the word: ${selectedWord}`);
+        if (guessedLetters.join(' ') === selectedWord.join('')) {
+            alert (`Congratulations! You guessed the word: ${selectedWord.join("")}`);
         } else if (remainingGuesses === 0) {
-            alert (`Game Over!  The word was: ${selectedWord}`);
+            alert (`Game Over!  The word was: ${selectedWord.join("")}`);
         }
     })
 }
@@ -309,7 +309,7 @@ function displayGuesses() {
         console.log(`the guess is: ${guesses}`)
         // create a <p> to contain the guesses
         let p = document.createElement('p')
-        p.textContent = guesses + ',  '
+        p.textContent = guesses + ', '
         // append the paragraph to the output div
         let display = document.getElementById('display-guesses')
         display.appendChild(p)
