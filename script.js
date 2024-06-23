@@ -62,6 +62,7 @@ else:
 
                     Working Code
 */
+// todohighlight.toggleURI = true
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
@@ -255,16 +256,6 @@ function submitForm(e){
     
 }
 
-// function to compare the guess to the selected word and match all the matching indices. 
-function matchingIndices(arr,value){
-    let index = arr.indexOf(value)
-    console.log(arr)
-    while (index !== -1){
-        matchingGuesses.push(index)
-        index = arr.indexOf (value, index + 1)
-    }
-    return matchingGuesses.value
-}
 
 
 
@@ -274,21 +265,7 @@ function matchingIndices(arr,value){
 
 
 
-// This function needs work and is not working properly
 
-function fillArrayWithMatchingIndices(string, value) {
-    // Create an array with the same length as the string, initialized with null
-    let resultArray = Array(string.length).fill(null);
-
-    // Iterate through the string to find matching indices
-    for (let i = 0; i < string.length; i++) {
-        if (string[i] === value) {
-            resultArray[i] = value;
-        }
-    }
-
-    return resultArray;
-}
 
 
 
@@ -324,7 +301,9 @@ function analyzeGuess(){
         if(isCorrectGuess){
             matchingIndices(selectedWord, analyzedLetter)
             console.log(`matchingGuesses: ${matchingGuesses}`)
-            fillArrayWithMatchingIndices(matchingGuesses, analyzedLetter)
+            // TODO:   fillArray.... is not working
+            let test = fillArrayWithMatchingIndices(matchingGuesses, analyzedLetter)
+            console.log(`test: ${test}`)
             //console.log(`new array: ${resultArray}`)
         }
         // Display the updated game state
@@ -342,7 +321,40 @@ function analyzeGuess(){
 analyzeGuess()
 
 
+// function to compare the guess to the selected word and match all the matching indices. 
+function matchingIndices(arr,value){
+    let index = arr.indexOf(value)
+    console.log(arr)
+    console.log(value)
+    const values = arr.map(value => arr[value]); 
+    console.log (`array values: ${values}`)
+    
+    while (index !== -1){
+        matchingGuesses.push(index)
+        index = arr.indexOf (value, index + 1)
+        console.log(`matching guess value: ${matchingGuesses}`)
+        console.log(`index: ${index}`)
+    }
+    // TODO: matching guesses returns all the indexes and pushes as more matches are correct
+    return matchingGuesses
+}
 
+
+// TODO: This function needs work and is not working properly
+// FIXME:    
+function fillArrayWithMatchingIndices(string, value) {
+    // Create an array with the same length as the string, initialized with null
+    let resultArray = Array(string.length).fill(null);
+
+    // Iterate through the string to find matching indices
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] === value) {
+            resultArray[i] = value;
+        }
+    }
+    console.log(`resultArray: ${resultArray}`)
+    return resultArray;
+}
 
 
 // Display guesses on the webpage
