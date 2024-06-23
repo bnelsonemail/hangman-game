@@ -62,7 +62,6 @@ else:
 
                     Working Code
 */
-// todohighlight.toggleURI = true
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
@@ -96,12 +95,6 @@ console.log(`wrong guesses: ${wrongGuesses}`);
 
 
 const gameContainer = document.getElementById('game-container');
-
-// set up an array to track the guessed letters
-//const guessedLetters = Array(selectedWord).fill(' ');
-//console.log(`The guessed letters: ${guessedLetters}`);
-
-
 
 
 // provide an array of words for the random selection of words
@@ -152,12 +145,6 @@ const wordDisplay = displayWord(selectedWord);
 
 
 
-
-
-
-
-
-
 // function to display the current state of the game
 function displayGameState(){
     //console.log('word:  ' + guessedLetters.join(' '));
@@ -181,9 +168,6 @@ function randomWord(wordList) {
 
 console.log(`the selectedWord is: ${selectedWord}`)
 
-// Call the container
-
-
 // create and append an element for each item in the array
 function displayWord(selectedWord) {
     const wordContainer = document.getElementById('selected-word-container');
@@ -199,44 +183,16 @@ function displayWord(selectedWord) {
 
     });
 }
-/*
-const guessForm = document.getElementById('guesses-form');
-    guessForm.addEventListener('submit', function (e){
-        // prefent the default form submission behavior
-        e.preventDefault();
 
-        // collect form data
-        const formData = new FormData(e.target);
-
-        // stor form data in a variable
-        const formObject = {};
-        formData.forEach((value, key) => {
-            formObject[key] = value;
-        });
-        console.log(formObject)
-        return formObject;
-    });
-
-//let letter = formObject
-*/
 let inputs = {
     userGuesses: ''
 }
 
 
 function handleGuess(e){
-    console.log(`change event: ${e.type}`)
-    //console.log(`input value: ${e.target.value}`)
-
     // Update the inputs object with the new value
     inputs.userGuesses = e.target.value;
-    /*switch (e.target.type){
-        case 'name':
-            inputs = {...inputs, [e.target.name]: e.target.value};
-            break;
-    };*/
     let letter = inputs.userGuesses
-    console.log(`letter: ${letter}`)
     return letter
 };
 
@@ -259,28 +215,13 @@ function submitForm(e){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // function to analyze a guess
 function analyzeGuess(){
     
     const guessesSubmit = document.getElementById('guesses-submit')
     guessesSubmit.addEventListener('click', () => {
         let analyzedLetter = inputs.userGuesses
-        console.log(`analyzed letter: ${analyzedLetter}`)
+        //console.log(`analyzed letter: ${analyzedLetter}`)
         let isCorrectGuess = false;
         console.log(`return value letter: ${inputs.userGuesses}`)
         
@@ -300,11 +241,9 @@ function analyzeGuess(){
         // Display letters in separate array 
         if(isCorrectGuess){
             matchingIndices(selectedWord, analyzedLetter)
-            console.log(`matchingGuesses: ${matchingGuesses}`)
-            // TODO:   fillArray.... is not working
-            let test = fillArrayWithMatchingIndices(matchingGuesses, analyzedLetter)
+            // TODO:  fillArray.... is not working
+           let test = fillArrayWithMatchingIndices(selectedWord)
             console.log(`test: ${test}`)
-            //console.log(`new array: ${resultArray}`)
         }
         // Display the updated game state
         displayGameState();
@@ -324,42 +263,37 @@ analyzeGuess()
 // function to compare the guess to the selected word and match all the matching indices. 
 function matchingIndices(arr,value){
     let index = arr.indexOf(value)
-    console.log(arr)
-    console.log(value)
+    console.log(`matchingIndices arr: ${arr}`)
+    console.log(`matchingIndices value: ${value}`)
     const values = arr.map(value => arr[value]); 
     console.log (`array values: ${values}`)
     
+    // loop to determine what indices match the guessed letter and push to the array matchingGuesses
     while (index !== -1){
         matchingGuesses.push(index)
         index = arr.indexOf (value, index + 1)
         console.log(`matching guess value: ${matchingGuesses}`)
         console.log(`index: ${index}`)
     }
-    // TODO: matching guesses returns all the indexes and pushes as more matches are correct
+    // TODO: matchingGuesses returns all the indexes and pushes as more matches are correct
     return matchingGuesses
 }
 
 
 // TODO: This function needs work and is not working properly
-// FIXME:    
-function fillArrayWithMatchingIndices(string, value) {
-    // Create an array with the same length as the string, initialized with null
-    let resultArray = Array(string.length).fill(null);
+// FIXME:    Currently it is returning the first index[0] every time.
 
-    // Iterate through the string to find matching indices
-    for (let i = 0; i < string.length; i++) {
-        if (string[i] === value) {
-            resultArray[i] = value;
-        }
-    }
-    console.log(`resultArray: ${resultArray}`)
-    return resultArray;
+function fillArrayWithMatchingIndices (arr){ 
+    return arr.map(function (val, matchingGuesses){
+        return val[matchingGuesses]
+    })
 }
+
+
 
 
 // Display guesses on the webpage
 function displayGuesses() {
-    //console.log('function is being executed')
     const btn = document.getElementById('guesses-submit')
     btn.addEventListener('click', function(e){
         e.preventDefault()
@@ -379,51 +313,3 @@ function displayGuesses() {
 }
 
 displayGuesses()
-
-
-
-//handleGuess(letter);
-/*
-function revealWord (selectedWord) {
-    const revealContainer = document.getElementById('reveal-word-container');
-    const guessForm = document.getElementById('guesses-form');
-    guessForm.addEventListener('submit', function (e){
-        // prefent the default form submission behavior
-        e.preventDefault();
-
-        // collect form data
-        const formData = new FormData(e.target);
-
-        // stor form data in a variable
-        const formObject = {};
-        formData.forEach((value, key) => {
-            formObject[key] = value;
-        });
-        console.log(formObject)
-    });
-*/
-    /*
-    // use forEach loop and index (idx) to run if statement with includes to reveal letters.
-    selectedWord.forEach(function (val, idx)){
-        // create div element and class to contain revealed word and styling capabilities
-        const reveal = document.createElement('div');
-        reveal.classList.add('reveal-word');
-
-        // if statement to compare guess with selectedWord
-
-
-    }
-}*/
-
-
-/*
-// function to place chosen word into an array making each letter an index
-function wordToArray(selectedWord) {
-    return selectedWord.split('');
-}
-
-// Example usage:
-let selectedWord = randomWord(wordList);
-let wordArray = wordToArray(selectedWord);
-console.log (`the wordToArray: ${wordArray}`);
-*/
