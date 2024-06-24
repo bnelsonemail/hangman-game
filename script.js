@@ -171,17 +171,13 @@ console.log(`the selectedWord is: ${selectedWord}`)
 // create and append an element for each item in the array
 function displayWord(selectedWord) {
     const wordContainer = document.getElementById('selected-word-container');
-    selectedWord.forEach(function (val) {
-        const word = document.createElement('div');
-        word.classList.add('selected-word');
-
-        // Convert the letter to uppercase
-        //word.textContent = val.toUpperCase(); 
-       word.textContent = '_';
-       wordContainer.appendChild(word);
-
-
-    });
+    for(let i=0; i < selectedWord.length; i++){
+        let char = document.createElement('div');
+        char.classList.add('selected-word');
+        char.id = 'divID' + i
+        char.textContent = '_';
+        wordContainer.appendChild(char);
+    }
 }
 
 let inputs = {
