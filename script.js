@@ -171,13 +171,22 @@ console.log(`the selectedWord is: ${selectedWord}`)
 // create and append an element for each item in the array
 function displayWord(selectedWord) {
     const wordContainer = document.getElementById('selected-word-container');
-    for(let i=0; i < selectedWord.length; i++){
-        let char = document.createElement('div');
-        char.classList.add('selected-word');
-        char.id = 'divID' + i
-        char.textContent = '_';
-        wordContainer.appendChild(char);
+    if(matchingGuesses.length === 0) {
+        for(let i=0; i < selectedWord.length; i++){
+            let char = document.createElement('div');
+            char.classList.add('selected-word');
+            char.id = i
+            char.textContent = '_';
+            wordContainer.appendChild(char);
+        }
     }
+
+        // TODO: compare matchingGuesses (array with index of correct guesses) to selectedWord to reveal the index from matchingGuesses
+       /* else if(matchingGuesses.length !== 0) {
+            for (let i = 0; i < selectedWord.length; i++){
+                
+            }
+        }*/
 }
 
 let inputs = {
