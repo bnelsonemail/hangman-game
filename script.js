@@ -167,6 +167,28 @@ function randomWord(wordList) {
 // function to place selected word into an array on the web page in the word container
 
 console.log(`the selectedWord is: ${selectedWord}`)
+/*
+function displayWord(selectedWord) {
+    const wordContainer = document.getElementById('selected-word-container');
+    wordContainer.innerHTML = '';  // Clear the container
+
+    for (let i = 0; i < selectedWord.length; i++) {
+        let char = document.createElement('div');
+        char.classList.add('selected-word');
+        char.id = i;
+
+        if (matchingGuesses.length !== 0) {
+            char.textContent = selectedWord[i];  // Reveal the correct letter
+        } else {
+            char.textContent = '_';  // Keep it hidden
+        }
+        
+        wordContainer.appendChild(char);
+    }
+}
+*/
+
+
 
 // create and append an element for each item in the array
 function displayWord(selectedWord) {
@@ -176,18 +198,26 @@ function displayWord(selectedWord) {
             let char = document.createElement('div');
             char.classList.add('selected-word');
             char.id = i
+
+            if(matchingGuesses.length !== 0) {
+                char.textContent = selectedWord[i];  // Reveal the correct letter  
+                wordContainer.appendChild(char);
+                }
+            else {
             char.textContent = '_';
             wordContainer.appendChild(char);
+            }
         }
     }
 
         // TODO: compare matchingGuesses (array with index of correct guesses) to selectedWord to reveal the index from matchingGuesses
-       /* else if(matchingGuesses.length !== 0) {
-            for (let i = 0; i < selectedWord.length; i++){
-                
+       /*else if(matchingGuesses.length !== 0) {
+            char.textContent = selectedWord[i];  // Reveal the correct letter  
             }
         }*/
 }
+
+
 
 let inputs = {
     userGuesses: ''
@@ -247,8 +277,8 @@ function analyzeGuess(){
         if(isCorrectGuess){
             matchingIndices(selectedWord, analyzedLetter)
             // TODO:  fillArray.... is not working
-           let test = fillArrayWithMatchingIndices(selectedWord)
-            console.log(`test: ${test}`)
+           displayWord(selectedWord, matchingGuesses)
+        
         }
         // Display the updated game state
         displayGameState();
@@ -287,12 +317,12 @@ function matchingIndices(arr,value){
 
 // TODO: This function needs work and is not working properly
 // FIXME:    Currently it is returning the first index[0] every time.
-
+/*
 function fillArrayWithMatchingIndices (arr){ 
     return arr.map(function (val, matchingGuesses){
         return val[matchingGuesses]
     })
-}
+}*/
 
 
 
