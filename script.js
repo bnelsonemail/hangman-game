@@ -249,6 +249,7 @@ function submitForm(e){
 
 
 
+//TODO: need to write logic to allow the guessed letter (analyzedLetter) to unlock the letter of the word (selectedWord)
 
 // function to analyze a guess
 function analyzeGuess(){
@@ -259,6 +260,7 @@ function analyzeGuess(){
         //console.log(`analyzed letter: ${analyzedLetter}`)
         let isCorrectGuess = false;
         console.log(`return value letter: ${inputs.userGuesses}`)
+        console.log('=======================')
         
         // Check if guessed letter is in the selected word
         for (let i = 0; i < selectedWord.length; i++){
@@ -266,6 +268,7 @@ function analyzeGuess(){
                 guessedLetters[i] = analyzedLetter;
                 isCorrectGuess = true;
                 console.log(`the guess is: ${isCorrectGuess}`);
+                console.log('=======================')
             }
         }
         // Decrease the number of remaining guesses if the guess is incorrect
@@ -276,7 +279,7 @@ function analyzeGuess(){
         // Display letters in separate array 
         if(isCorrectGuess){
             matchingIndices(selectedWord, analyzedLetter)
-            // TODO:  fillArray.... is not working
+            
            displayWord(selectedWord, matchingGuesses)
         
         }
@@ -300,8 +303,9 @@ function matchingIndices(arr,value){
     let index = arr.indexOf(value)
     console.log(`matchingIndices arr: ${arr}`)
     console.log(`matchingIndices value: ${value}`)
+    //console.log(`matchingIndices origArr: ${origArr}`)
     const values = arr.map(value => arr[value]); 
-    console.log (`array values: ${values}`)
+    console.log (`array values: ${index}`)
     
     // loop to determine what indices match the guessed letter and push to the array matchingGuesses
     while (index !== -1){
@@ -348,3 +352,54 @@ function displayGuesses() {
 }
 
 displayGuesses()
+
+
+
+// TODO: This function is NOT working
+
+// function to reveal the index values of the selectedWord using the index values in matchingGuesses into the reveal-word-container
+function revealWord() {
+    const revealContainer = document.getElementById('reveal-word-container');
+    revealContainer.innerHTML = ''; // Clear the container
+
+    for (let i = 0; i < selectedWord.length; i++) {
+        let char = document.createElement('div');
+        char.classList.add('selected-word');
+        char.id = i;
+
+        if (matchingGuesses.includes(i)) {
+            char.textContent = selectedWord[i]; // Reveal the correct letter
+        } else {
+            char.textContent = '_'; // Keep it hidden
+        }
+
+        revealContainer.appendChild(char);
+    }
+}
+
+
+
+
+
+
+
+
+/*
+
+function revealWord () {
+    const reveal = document.getElementById('reveal-word-container')
+    reveal.addEventListener('click', function(e){
+        e.preventDefault()
+        // collect form data
+        let guesses = inputs.userGuesses
+        console.log(`the guess is: ${guesses}`)
+        // create a <p> to contain the guesses
+        let p = document.createElement('p')
+        p.textContent = guesses + ', '
+        // append the paragraph to the output div
+        let display = document.getElementById('display-guesses')
+        display.appendChild(p)
+        // clear form after submission
+        document.getElementById('guesses-form').reset()
+}
+*/
